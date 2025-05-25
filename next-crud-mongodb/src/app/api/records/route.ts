@@ -47,7 +47,7 @@ export async function GET(req: Request) {
     const pageNumber = searchParams.get('page') || '1'
     const limit = searchParams.get('limit') || '10'
 
-    const client = await clientPromise
+    const client = await getMongo() // forgot to change this
     const db = client.db('records')
     const length = await db.collection('records').estimatedDocumentCount()
     const pageCount: number = Math.ceil(length / parseInt(limit))
