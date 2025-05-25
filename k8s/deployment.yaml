@@ -18,7 +18,7 @@ spec:
         - name: ghcr-pull-secret   
       containers:
         - name: nextjs-app
-          image: ghcr.io/mlasitsa/devops-capstone:b4b51be
+          image: ghcr.io/mlasitsa/devops-capstone:9624039
           ports:
             - containerPort: 3000
           env:
