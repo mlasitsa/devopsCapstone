@@ -2,7 +2,7 @@ import { MongoClient } from "mongodb";
 import dotenv from 'dotenv'
 
 dotenv.config()
-
+// need to test
 let client: MongoClient | null = null 
 
 export async function getMongo(){
