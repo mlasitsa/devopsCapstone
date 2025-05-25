@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: nextjs-app
-          image: ghcr.io/mlasitsa/devops-capstone:latest
+          image: ghcr.io/mlasitsa/devops-capstone:b4b51be
           ports:
             - containerPort: 3000
           env:
