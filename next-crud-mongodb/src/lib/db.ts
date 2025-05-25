@@ -7,7 +7,6 @@ let client: MongoClient | null = null
 
 export async function getMongo(){
     if (client) return client;
-
     const url = 'mongodb+srv://maximlasitsa:krtupechka9091@schedulecluster.fdnhkev.mongodb.net/?retryWrites=true&w=majority&appName=ScheduleCluster'
     if (!url)
     throw new Error(
