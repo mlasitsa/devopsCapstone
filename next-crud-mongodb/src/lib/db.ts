@@ -3,24 +3,19 @@ import dotenv from 'dotenv'
 
 dotenv.config()
 
-const url = process.env.MONGODB_CONNECTION_URL2!
-console.log(url)
+let client: MongoClient | null = null 
 
-// leave empty for now, its for MongoDB Configs
-const options = {}
+export async function getMongo(){
+    if (client) return client;
 
-let client: MongoClient
-let clientPromise: Promise<MongoClient>
+    const url = process.env.MONGODB_CONNECTION_URL2
+    if (!url)
+    throw new Error(
+      'MONGODB_CONNECTION_URL2 env-var is missing - set it at container RUNTIME'
+    );
 
-declare global {
-    var _mongoClientPromise: Promise<MongoClient> | undefined
+    client = new MongoClient(url)
+    await client.connect()
+    return client
+
 }
-
-if (!global._mongoClientPromise) {
-    client = new MongoClient(url, options)
-    global._mongoClientPromise = client.connect()
-}
-
-clientPromise = global._mongoClientPromise
-
-export default clientPromise

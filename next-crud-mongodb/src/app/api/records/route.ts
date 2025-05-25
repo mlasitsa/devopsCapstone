@@ -1,12 +1,12 @@
 export const dynamic = 'force-dynamic';
 
-import clientPromise from "@/lib/db";
+import { getMongo } from "@/lib/db";
 import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
     try {
         const body = await req.json()
-        const client = await clientPromise
+        const client = await getMongo()
         const db = client.db('records')
 
         const filter = {title: body.title}
