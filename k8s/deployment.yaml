@@ -19,3 +19,9 @@ spec:
           image: ghcr.io/mlasitsa/devops-capstone:latest
           ports:
             - containerPort: 3000
+          env:
+            - name: MONGODB_URI
+              valueFrom:
+                secretKeyRef:
+                  name: mongodb-uri-secret
+                  key: MONGODB_URI
